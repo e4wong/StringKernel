@@ -26,12 +26,33 @@ def kernel_dot_product(data, x, p):
 		count = count + label * kernel_function(feature, x, p)
 	return count
 
+def train(dataset, p):
+	collection = []
+	for (feature, label) in dataset:
+		if label * kernel_dot_product(collection, feature, p) <= 0:
+			collection.append((feature, label))
+	return collection
+
+def test(collection, dataset, p):
+	errors = 0
+	num_samples = len(dataset)
+	for (feature, label) in dataset:
+		if label * kernel_dot_product(collection, feature, p) <= 0:
+			errors = errors + 1
+	return float(errors)/ float(num_samples)
+
+
 def main():
 	training_set = load("hw5train.txt")
 	test_set = load("hw5test.txt")
-	a = "asdf"
-	b = "adfsdsdsdsd"
-	print kernel_dot_product(training_set, "ASDF", 3)
+	print "P = 3:"
+	collections = train(training_set, 3)
+	print "Training Error: " + str(test(collections, training_set, 3))
+	print "Testing Error: " + str(test(collections, test_set, 3))
+	print "P = 4:"
+	collections = train(training_set, 4)
+	print "Training Error: " + str(test(collections, training_set, 4))
+	print "Testing Error: " + str(test(collections, test_set, 4))
 
 if __name__ == '__main__':
 	main()
