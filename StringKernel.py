@@ -20,17 +20,18 @@ def kernel_function(s, t, p):
 				count = count + 1
 	return count
 
-
+def kernel_dot_product(data, x, p):
+	count = 0
+	for (feature, label) in data:
+		count = count + label * kernel_function(feature, x, p)
+	return count
 
 def main():
 	training_set = load("hw5train.txt")
 	test_set = load("hw5test.txt")
-<<<<<<< HEAD
 	a = "asdf"
 	b = "adfsdsdsdsd"
-	print kernel_function(a, b, 2)
-=======
+	print kernel_dot_product(training_set, "ASDF", 3)
 
->>>>>>> b0537375e6863078c362004de6ca2375793240b9
 if __name__ == '__main__':
 	main()
