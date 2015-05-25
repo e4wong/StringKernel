@@ -1,13 +1,14 @@
 import re
+import numpy
 
 def load(fn):
-	ds = []
+	data_matrix = []
 	f = open(fn, "r")
 	for line in f:
 		tokens = line.split()
 		data = (tokens[0], int(tokens[-1]))
-		ds.append(data)
-	return ds
+		data_matrix.append(data)
+	return data_matrix
 
 def kernel_function(s, t, p):
 	count = 0
@@ -24,8 +25,12 @@ def kernel_function(s, t, p):
 def main():
 	training_set = load("hw5train.txt")
 	test_set = load("hw5test.txt")
+<<<<<<< HEAD
 	a = "asdf"
 	b = "adfsdsdsdsd"
 	print kernel_function(a, b, 2)
+=======
+
+>>>>>>> b0537375e6863078c362004de6ca2375793240b9
 if __name__ == '__main__':
 	main()
