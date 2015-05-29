@@ -13,7 +13,7 @@ def load(fn):
 
 
 
-def kernel_function(string1, string2, substring_length):
+def kernel_function(s, t, substring_length):
 	count = 0
 	found = []
 	for i in range(0, len(s) - p + 1):
