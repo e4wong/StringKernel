@@ -12,12 +12,15 @@ def load(fn):
 
 def kernel_function(s, t, p):
 	count = 0
+	found = []
 	for i in range(0, len(s) - p + 1):
 		s_substring = s[i:i+p]
 		for j in range(0, len(t) - p + 1):
 			t_substring = t[j:j+p]
-			if s_substring == t_substring:
+			if s_substring == t_substring and not(s_substring in found):
+				found.append(s_substring)
 				count = count + 1
+				break
 	return count
 
 def kernel_dot_product(data, x, p):
